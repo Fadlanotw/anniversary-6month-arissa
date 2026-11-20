@@ -95,6 +95,12 @@
   .letter.show{display:block;animation:fadeIn 1s}
   .letter .script{font-size:2rem;color:var(--rose)}
 
+  /* Musik */
+  #musicBtn{position:fixed;left:16px;bottom:16px;z-index:60;width:48px;height:48px;border-radius:50%;border:none;cursor:pointer;font-size:1.3rem;color:#fff;
+    background:linear-gradient(135deg,var(--pink),var(--rose));box-shadow:0 8px 22px rgba(201,24,74,.45);display:none;align-items:center;justify-content:center}
+  #musicBtn.show{display:flex}
+  #musicBtn.playing{animation:spin 4s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
   /* Galeri */
   .grid{margin-top:20px}
   .row{display:grid;gap:18px;margin:0 auto 22px;justify-content:center}
@@ -568,6 +574,30 @@ function observe(){
 }
 observe();
 $('#scrollBtn').addEventListener('click',e=>{e.preventDefault();$('#hitung').scrollIntoView({behavior:'smooth'})});
+</script>
+<audio id="bgm" src="musik.mp3" loop preload="auto"></audio>
+<button id="musicBtn" type="button" aria-label="Putar / jeda musik" title="Putar / jeda musik">🎵</button>
+<script>
+/* ============ MUSIK LATAR ============
+   Taruh file lagu bernama musik.mp3 sejajar dengan index.html.
+   Musik mulai saat halaman pertama kali disentuh/diklik (aturan browser), tombol 🎵 untuk jeda/putar. */
+(function(){
+  const a=document.getElementById('bgm'),b=document.getElementById('musicBtn');
+  let want=true;
+  a.volume=.6;
+  a.addEventListener('canplay',()=>b.classList.add('show'),{once:true});
+  a.addEventListener('error',()=>b.classList.remove('show'));
+  function sync(){b.classList.toggle('playing',!a.paused);b.textContent=a.paused?'🔇':'🎵'}
+  a.addEventListener('play',sync);a.addEventListener('pause',sync);
+  function start(){if(want&&a.paused)a.play().catch(()=>{})}
+  ['click','touchstart','keydown'].forEach(ev=>document.addEventListener(ev,function f(e){
+    if(e.target.closest&&e.target.closest('#musicBtn'))return;
+    start();if(!a.paused)document.removeEventListener(ev,f);
+  },{passive:true}));
+  b.addEventListener('click',()=>{if(a.paused){want=true;a.play().catch(()=>{})}else{want=false;a.pause()}});
+  document.addEventListener('visibilitychange',()=>{if(document.hidden)a.pause();else start()});
+  start();
+})();
 </script>
 </body>
 </html>
