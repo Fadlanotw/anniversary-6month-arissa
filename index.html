@@ -95,6 +95,80 @@
   .letter.show{display:block;animation:fadeIn 1s}
   .letter .script{font-size:2rem;color:var(--rose)}
 
+
+  /* ===== Layar pembuka ===== */
+  #intro{position:fixed;inset:0;z-index:300;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;
+    background:radial-gradient(circle at 50% 40%,#ffd6e4,#ff9ebd 70%,#e8336b);transition:opacity .9s,visibility .9s}
+  #intro::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 40%,#4a1230,#16050f);opacity:0;transition:opacity .8s}
+  #intro.night::before{opacity:1}
+  #intro>div{position:relative;z-index:1}
+  #intro.out{opacity:0;visibility:hidden}
+  #intro small{display:block;letter-spacing:4px;text-transform:uppercase;font-weight:600;font-size:.72rem;color:#fff;margin-bottom:8px}
+  #intro h1{font-size:clamp(2.6rem,10vw,4.6rem);color:#fff;line-height:1.1;text-shadow:0 6px 24px rgba(201,24,74,.45);font-weight:400}
+  #introBtn{font-size:6.5rem;background:none;border:none;cursor:pointer;line-height:1;margin:18px 0 6px;filter:drop-shadow(0 12px 24px rgba(120,10,50,.5));animation:beat 1.3s ease-in-out infinite;transition:transform .6s,opacity .6s}
+  #intro.go #introBtn{animation:none;transform:scale(2.6);opacity:0}
+  #intro .ihint{color:#fff;font-weight:600;animation:blink 1.6s infinite;text-shadow:0 2px 10px rgba(120,10,50,.7),0 0 3px rgba(120,10,50,.6)}
+  #intro.go .ihint{display:none}
+  #introCount{font-family:'Great Vibes',cursive;font-size:5rem;color:#fff;min-height:1.2em;text-shadow:0 6px 24px rgba(201,24,74,.5)}
+
+  /* ===== Tombol melayang kiri bawah ===== */
+  .fab{position:fixed;bottom:16px;z-index:60;width:48px;height:48px;border-radius:50%;border:none;cursor:pointer;font-size:1.25rem;color:#fff;
+    background:linear-gradient(135deg,var(--pink),var(--rose));box-shadow:0 8px 22px rgba(201,24,74,.45);display:flex;align-items:center;justify-content:center}
+  #darkBtn{left:72px}
+  #lyricBtn{left:128px}
+  #lyricBtn.off{opacity:.55}
+
+  /* ===== Teks berjalan ===== */
+  #lyric{position:fixed;left:50%;bottom:78px;transform:translateX(-50%) translateY(12px);z-index:55;max-width:min(92vw,560px);width:max-content;text-align:center;
+    padding:10px 20px;border-radius:30px;background:rgba(74,28,46,.78);color:#fff;font:400 .95rem/1.5 'Poppins',sans-serif;backdrop-filter:blur(8px);
+    opacity:0;pointer-events:none;transition:opacity .6s,transform .6s}
+  #lyric.show{opacity:1;transform:translateX(-50%)}
+  #lyric.swap{opacity:0}
+
+  /* ===== Alasan aku sayang kamu ===== */
+  .reasons{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px;margin-top:10px}
+  .rs{perspective:800px;height:172px;border:none;background:none;cursor:pointer;font:inherit;color:inherit}
+  .rs .in{display:block;position:relative;width:100%;height:100%;transition:transform .7s;transform-style:preserve-3d}
+  .rs.open .in{transform:rotateY(180deg)}
+  .rs .f,.rs .b{position:absolute;inset:0;border-radius:18px;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:14px;
+    box-shadow:0 8px 25px rgba(201,24,74,.18)}
+  .rs .f{background:linear-gradient(135deg,var(--pink),var(--rose));color:#fff;font-size:2.2rem}
+  .rs .f small{font-size:.72rem;letter-spacing:2px;text-transform:uppercase;margin-top:6px;font-weight:600}
+  .rs .b{background:#fff;transform:rotateY(180deg);font-size:.84rem;line-height:1.65;font-weight:300;color:#4a1c2e}
+  .rs-count{margin-top:18px;font-weight:600;color:var(--rose)}
+
+  /* ===== Pesan rahasia ===== */
+  .secret{max-width:520px;margin:0 auto;background:rgba(255,255,255,.78);backdrop-filter:blur(6px);border-radius:22px;padding:30px 24px;box-shadow:0 10px 30px rgba(201,24,74,.18);border-top:5px solid var(--gold)}
+  .secret .lock{font-size:3.4rem;display:block;animation:beat 2s infinite}
+  .secret p{font-weight:300;line-height:1.8;margin:8px 0 14px}
+  .secret #secretForm{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+  .secret input{flex:1 1 170px;max-width:240px;padding:13px 18px;border-radius:40px;border:2px solid var(--pink);font:400 1rem 'Poppins',sans-serif;text-align:center;background:#fff;color:#4a1c2e;outline:none}
+  .secret input:focus{border-color:var(--rose)}
+  .secret .shake{animation:shake .5s}
+  @keyframes shake{20%,60%{transform:translateX(-8px)}40%,80%{transform:translateX(8px)}}
+  #secretMsg{display:none;text-align:left;white-space:pre-wrap;line-height:2;background:#fffaf3;color:#4a1c2e;border-left:6px solid var(--pink);border-radius:12px;padding:30px 24px;margin-top:20px;box-shadow:0 12px 30px rgba(0,0,0,.12)}
+  #secretMsg.show{display:block;animation:fadeIn 1s}
+  #secretMsg .script{font-size:2rem;color:var(--rose)}
+
+  /* ===== Mode malam ===== */
+  body.dark{--ink:#ffe3ec;--soft:#2a1522;--rose:#ee3d74;--pink:#ff7aa8;
+    background:linear-gradient(160deg,#1a0b14,#2a1020,#220d1a,#2e1426);background-size:300% 300%}
+  body.dark nav{background:rgba(30,12,22,.88);box-shadow:0 2px 15px rgba(0,0,0,.5)}
+  body.dark nav button{color:#ffb3cb}
+  body.dark nav button.active,body.dark nav button:hover{color:#fff}
+  body.dark h2,body.dark .hero h1,body.dark .hero small,body.dark #toGo,body.dark .love-count,body.dark .total,body.dark .hint,body.dark .rs-count,body.dark footer .script,body.dark .card h3,body.dark .box b,body.dark .kid h3{color:#ff8fb3}
+  body.dark .box,body.dark .dream-quote,body.dark .secret{background:rgba(46,20,36,.82)}
+  body.dark .card,body.dark .shot,body.dark .kid{background:#2e1426}
+  body.dark .like{background:#43203a;color:#ffb3cb}
+  body.dark .like.on{background:var(--rose);color:#fff}
+  body.dark .rs .b{background:#2e1426;color:#ffe3ec}
+  body.dark .secret input{background:#1f0d18;color:#ffe3ec}
+  body.dark .item::after{background:#2a1522}
+  body.dark .letter,body.dark #letterModal .sheet{color:#4a1c2e}
+  body.dark .photo-frame img,body.dark .shot img{background:#43203a}
+  body.dark .kid p,body.dark .sub,body.dark .typed{color:#ffe3ec}
+  body.dark #intro{display:none}
+
   /* Musik */
   #musicBtn{position:fixed;left:16px;bottom:16px;z-index:60;width:48px;height:48px;border-radius:50%;border:none;cursor:pointer;font-size:1.3rem;color:#fff;
     background:linear-gradient(135deg,var(--pink),var(--rose));box-shadow:0 8px 22px rgba(201,24,74,.45);display:none;align-items:center;justify-content:center}
@@ -182,6 +256,16 @@
 </head>
 <body>
 
+<div id="intro">
+  <div>
+    <small>28 Mei 2026 — 28 November 2026</small>
+    <h1 class="script">Untuk Arissa<br>Zulaikha</h1>
+    <button id="introBtn" type="button" aria-label="Buka">💖</button>
+    <p class="ihint">Ketuk hatinya untuk membuka 💗</p>
+    <div id="introCount"></div>
+  </div>
+</div>
+
 <nav>
   <button data-go="home" class="active">🏠 Beranda</button>
   <button data-go="gallery">📸 Foto Arissa Zulaikha</button>
@@ -220,6 +304,27 @@
       <button class="love-btn" id="loveBtn" aria-label="Kirim cinta">❤️</button>
       <div class="love-count"><span id="loveCount">0</span> cinta terkirim</div>
       <p class="love-msg" id="loveMsg">Ayo pencet sebanyak-banyaknya, sayang!</p>
+    </div>
+  </section>
+
+  <section class="reveal" id="alasan">
+    <h2 class="script">Alasan Aku Sayang Kamu 💌</h2>
+    <p class="sub">Ketuk kartunya satu per satu, sayang</p>
+    <div class="reasons" id="reasons"></div>
+    <p class="rs-count" id="rsCount"></p>
+  </section>
+
+  <section class="reveal" id="rahasia">
+    <h2 class="script">Pesan Rahasia 🔐</h2>
+    <p class="sub">Ada pesan yang hanya boleh dibaca olehmu</p>
+    <div class="secret">
+      <span class="lock" id="lockIcon">🔒</span>
+      <p>Petunjuk: tanggal hari pertama kita, tanggal-bulan-tahun.<br><small>Contoh penulisan: 01012026</small></p>
+      <div id="secretForm">
+        <input id="secretInput" type="text" inputmode="numeric" placeholder="DDMMYYYY" maxlength="10" aria-label="Kata sandi">
+        <button class="btn" id="secretBtn" type="button">Buka 🔓</button>
+      </div>
+      <div id="secretMsg"></div>
     </div>
   </section>
 
@@ -575,6 +680,9 @@ function observe(){
 observe();
 $('#scrollBtn').addEventListener('click',e=>{e.preventDefault();$('#hitung').scrollIntoView({behavior:'smooth'})});
 </script>
+<div id="lyric" aria-live="polite"></div>
+<button id="darkBtn" class="fab" type="button" aria-label="Mode malam" title="Mode malam / terang">🌙</button>
+<button id="lyricBtn" class="fab" type="button" aria-label="Teks berjalan" title="Tampilkan / sembunyikan teks berjalan">📝</button>
 <audio id="bgm" src="musik.mp3" loop preload="auto"></audio>
 <button id="musicBtn" type="button" aria-label="Putar / jeda musik" title="Putar / jeda musik">🎵</button>
 <script>
@@ -585,8 +693,8 @@ $('#scrollBtn').addEventListener('click',e=>{e.preventDefault();$('#hitung').scr
   const a=document.getElementById('bgm'),b=document.getElementById('musicBtn');
   let want=true;
   a.volume=.6;
-  a.addEventListener('canplay',()=>b.classList.add('show'),{once:true});
-  a.addEventListener('error',()=>b.classList.remove('show'));
+  b.classList.add('show');
+  a.addEventListener('error',()=>{b.style.opacity='.5';b.title='File musik.mp3 belum ada'});
   function sync(){b.classList.toggle('playing',!a.paused);b.textContent=a.paused?'🔇':'🎵'}
   a.addEventListener('play',sync);a.addEventListener('pause',sync);
   function start(){if(want&&a.paused)a.play().catch(()=>{})}
@@ -594,9 +702,151 @@ $('#scrollBtn').addEventListener('click',e=>{e.preventDefault();$('#hitung').scr
     if(e.target.closest&&e.target.closest('#musicBtn'))return;
     start();if(!a.paused)document.removeEventListener(ev,f);
   },{passive:true}));
+  sync();
   b.addEventListener('click',()=>{if(a.paused){want=true;a.play().catch(()=>{})}else{want=false;a.pause()}});
   document.addEventListener('visibilitychange',()=>{if(document.hidden)a.pause();else start()});
   start();
+})();
+</script>
+
+<script>
+/* ============ FITUR TAMBAHAN ============ */
+(function(){
+  const $=s=>document.querySelector(s);
+  const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+
+  /* ---------- LAYAR PEMBUKA ---------- */
+  const intro=$('#intro'),ib=$('#introBtn'),ic=$('#introCount');
+  let started=false;
+  /* kembang api sungguhan (canvas) di atas layar pembuka */
+  function fireworks(){
+    const c=document.createElement('canvas');
+    c.style.cssText='position:fixed;inset:0;width:100%;height:100%;z-index:400;pointer-events:none';
+    const dpr=Math.min(devicePixelRatio||1,2);
+    c.width=innerWidth*dpr;c.height=innerHeight*dpr;document.body.appendChild(c);
+    const g=c.getContext('2d');g.scale(dpr,dpr);
+    const COL=['#ff6b9d','#ffd166','#ffffff','#ff4d7e','#f4b860','#ffb3cb','#c9184a'];
+    let P=[];
+    function shot(){
+      const x=innerWidth*(.15+Math.random()*.7),y=innerHeight*(.15+Math.random()*.45),col=COL[Math.floor(Math.random()*COL.length)];
+      for(let i=0;i<55;i++){const a=Math.PI*2*i/55,v=2+Math.random()*4.5;
+        P.push({x,y,vx:Math.cos(a)*v,vy:Math.sin(a)*v,l:1,c:Math.random()<.3?COL[Math.floor(Math.random()*COL.length)]:col,r:2+Math.random()*2})}
+    }
+    let n=0;const iv=setInterval(()=>{shot();if(++n>=8)clearInterval(iv)},260);
+    shot();
+    (function loop(){
+      g.clearRect(0,0,innerWidth,innerHeight);
+      P.forEach(q=>{q.x+=q.vx;q.y+=q.vy;q.vx*=.985;q.vy=q.vy*.985+.06;q.l-=.014;
+        g.globalAlpha=Math.max(q.l,0);g.fillStyle=q.c;g.shadowColor=q.c;g.shadowBlur=8;g.beginPath();g.arc(q.x,q.y,q.r,0,7);g.fill()});
+      P=P.filter(q=>q.l>0);
+      if(P.length||n<8)requestAnimationFrame(loop);else c.remove();
+    })();
+  }
+  function openIntro(){
+    if(started)return;started=true;intro.classList.add('go');
+    let n=3;ic.textContent=n;
+    const t=setInterval(()=>{
+      n--;
+      if(n>0){ic.textContent=n}
+      else{clearInterval(t);ic.textContent='💖';intro.classList.add('night');fireworks();
+        setTimeout(()=>{intro.classList.add('out');setTimeout(()=>{intro.style.display='none'},1000)},3200)}
+    },750);
+  }
+  ib.addEventListener('click',openIntro);
+  if(document.body.classList.contains('dark'))intro.style.display='none';
+
+  /* ---------- MODE MALAM ---------- */
+  const db=$('#darkBtn');
+  function setDark(on){document.body.classList.toggle('dark',on);db.textContent=on?'☀️':'🌙';store.set('arissa_dark',on?'1':'0')}
+  db.addEventListener('click',()=>setDark(!document.body.classList.contains('dark')));
+  if(store.get('arissa_dark')==='1'){document.body.classList.add('dark');db.textContent='☀️';intro.style.display='none';started=true}
+
+  /* ---------- ALASAN AKU SAYANG KAMU (edit teksnya di sini) ---------- */
+  const REASONS=[
+    'Senyummu membuat hari terberatku terasa ringan.',
+    'Kamu sabar menghadapiku, bahkan saat aku belum pantas disabari.',
+    'Doamu menguatkanku tanpa pernah meminta balasan.',
+    'Tawamu adalah suara paling menenangkan yang kukenal.',
+    'Kamu apa adanya, dan itu sudah lebih dari cukup bagiku.',
+    'Caramu peduli pada hal-hal kecil diam-diam menyentuh hatiku.',
+    'Bersamamu aku ingin menjadi laki-laki yang lebih baik.',
+    'Kamu mengajarkanku arti setia dan bertahan.',
+    'Denganmu, masa depan terasa indah dan penuh harapan.',
+    'Karena kamu adalah kamu, Arissa Zulaikha 💖'
+  ];
+  const rw=$('#reasons'),rc=$('#rsCount');let opened=new Set();
+  function upd(){rc.textContent=opened.size<REASONS.length?`${opened.size} dari ${REASONS.length} alasan terbuka`:'Dan masih ada ribuan alasan lain yang belum sempat kutulis… 💞'}
+  REASONS.forEach((t,i)=>{
+    const b=document.createElement('button');b.type='button';b.className='rs';
+    b.innerHTML=`<span class="in"><span class="f">💗<small>Alasan ${i+1}</small></span><span class="b">${t}</span></span>`;
+    b.addEventListener('click',e=>{
+      if(!b.classList.contains('open')){b.classList.add('open');opened.add(i);upd();
+        if(typeof burst==='function')burst(e.clientX,e.clientY,6);
+        if(opened.size===REASONS.length&&typeof fly==='function')for(let k=0;k<18;k++)setTimeout(fly,k*90)}
+      else b.classList.remove('open');
+    });
+    rw.appendChild(b);
+  });upd();
+
+  /* ---------- PESAN RAHASIA (kata sandi: 28052026) ---------- */
+  const PASS=['28052026','2852026','280526'];
+  const SECRET=`<span class="script">Arissa sayang,</span>
+
+Selamat 6 bulan. Terima kasih sudah memilih bertahan, memilih percaya, dan memilih aku di hari-hari ketika aku sendiri belum yakin pada diriku.
+
+Aku tidak bisa menjanjikan hidup yang selalu mudah, tapi aku berjanji akan terus belajar, terus berjuang, dan terus menjagamu dengan sepenuh hati.
+
+Semoga Allah menjaga hati kita, mendekatkan langkah kita, dan menjadikan kita keluarga kecil yang saling menguatkan.
+
+Aku sayang kamu, hari ini dan seterusnya. 💖
+
+— Fadlan`;
+  const sf=$('#secretForm'),si=$('#secretInput'),sm=$('#secretMsg'),lk=$('#lockIcon');
+  function tryOpen(){
+    const v=si.value.replace(/\D/g,'');
+    if(PASS.includes(v)){
+      lk.textContent='🔓';sm.innerHTML=SECRET;sm.classList.add('show');si.blur();
+      const r=sm.getBoundingClientRect();
+      if(typeof burst==='function')for(let i=0;i<5;i++)setTimeout(()=>burst(innerWidth*(.25+Math.random()*.5),innerHeight*.4,12),i*150);
+      if(typeof fly==='function')for(let k=0;k<20;k++)setTimeout(fly,k*80);
+      sm.scrollIntoView({behavior:'smooth',block:'center'});
+    }else{
+      si.classList.remove('shake');void si.offsetWidth;si.classList.add('shake');
+      if(typeof toast==='function')toast('Belum tepat, sayang 💗 coba ingat hari pertama kita');
+    }
+  }
+  $('#secretBtn').addEventListener('click',tryOpen);
+  si.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();tryOpen()}});
+
+  /* ---------- TEKS BERJALAN (ikut waktu musik; ganti kalimat & detiknya sesuka hati) ---------- */
+  const LYRICS=[
+    {t:0, x:'Enam bulan lalu, aku belum tahu hari ini akan sebahagia ini 💖'},
+    {t:5, x:'Ternyata jawabannya adalah kamu'},
+    {t:10,x:'Kamu hadir, dan hari biasa berubah menjadi cerita'},
+    {t:15,x:'Setiap tawamu menjadi lagu favoritku'},
+    {t:20,x:'Bersamamu, yang sederhana pun terasa istimewa'},
+    {t:25,x:'Terima kasih sudah bertahan dan percaya'},
+    {t:30,x:'Kamu rumah tempat hatiku pulang 🏡'},
+    {t:35,x:'Aku tidak menjanjikan sempurna, hanya setia'},
+    {t:40,x:'Doaku selalu menyebut namamu'},
+    {t:45,x:'Semoga Allah mudahkan jalan kita'},
+    {t:50,x:'Menuju halal, menuju rumah, menuju selamanya 💍'},
+    {t:55,x:'Happy 6 Months, Arissa Zulaikha 💖'}
+  ];
+  const a=$('#bgm'),ly=$('#lyric'),lb=$('#lyricBtn');
+  let lyOn=store.get('arissa_lyric')!=='0',cur=-1;
+  lb.classList.toggle('off',!lyOn);
+  lb.addEventListener('click',()=>{lyOn=!lyOn;lb.classList.toggle('off',!lyOn);store.set('arissa_lyric',lyOn?'1':'0');cur=-1;tick()});
+  function tick(){
+    if(!lyOn||a.paused||a.readyState<2){ly.classList.remove('show');return}
+    let k=0;for(let i=0;i<LYRICS.length;i++)if(a.currentTime>=LYRICS[i].t)k=i;
+    if(k!==cur){
+      cur=k;ly.classList.add('swap');
+      setTimeout(()=>{ly.textContent=LYRICS[k].x;ly.classList.remove('swap');ly.classList.add('show')},220);
+    }else ly.classList.add('show');
+  }
+  setInterval(tick,300);
+  a.addEventListener('pause',()=>ly.classList.remove('show'));
 })();
 </script>
 </body>
