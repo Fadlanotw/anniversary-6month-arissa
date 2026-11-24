@@ -252,14 +252,42 @@
   #toast.show{transform:translate(-50%,0)}
   footer{padding:50px 20px;text-align:center;font-weight:300;position:relative;z-index:1}
   footer .script{font-size:2.2rem;color:var(--rose)}
+
+  /* ===== Kunci jadian (sebelum layar pembuka) ===== */
+  #gate{position:fixed;inset:0;z-index:350;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;
+    background:radial-gradient(circle at 50% 40%,#f0d6ff,#dd9eff 70%,#aa33e8);transition:opacity .8s,visibility .8s}
+  #gate.out{opacity:0;visibility:hidden}
+  #gate .box2{max-width:380px;width:100%}
+  #gate .glock{font-size:5rem;display:block;animation:beat 1.8s ease-in-out infinite;filter:drop-shadow(0 10px 20px rgba(76,10,120,.4))}
+  #gate h1{font-size:clamp(2.2rem,9vw,3.4rem);color:#ffffff;font-weight:400;line-height:1.15;text-shadow:0 6px 24px rgba(145,24,201,.45);margin:6px 0 10px}
+  #gate p{color:#3b1060;font-weight:400;line-height:1.7;margin-bottom:16px}
+  #gate .grow{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+  #gate input{flex:1 1 160px;max-width:220px;padding:13px 18px;border-radius:40px;border:2px solid var(--pink);font:400 1rem 'Poppins',sans-serif;text-align:center;background:#ffffff;color:#361c4a;outline:none}
+  #gate input:focus{border-color:var(--rose)}
+  #gate .shake{animation:shake .5s}
+  #gateMsg{min-height:1.6em;margin-top:14px;color:#ffffff;font-weight:600;text-shadow:0 2px 10px rgba(76,10,120,.5)}
 </style>
 </head>
 <body>
 
+<div id="gate">
+  <div class="box2">
+    <span class="glock" id="gateLock">🔒</span>
+    <h1 class="script">Untuk Istrikuu</h1>
+    <p>Sebelum masuk, ketik tanggal jadian kita ya, cintakuuuu.<br><small>Tanggal-bulan-tahun, contoh: 01012026</small></p>
+    <div class="grow">
+      <input id="gateInput" type="text" inputmode="numeric" placeholder="DDMMYYYY" maxlength="10" aria-label="Tanggal jadian">
+      <button class="btn" id="gateBtn" type="button">Buka 🔓</button>
+    </div>
+    <div id="gateMsg"></div>
+  </div>
+</div>
+
+
 <div id="intro">
   <div>
     <small>28 Mei 2026 — 28 November 2026</small>
-    <h1 class="script">Untuk Arissa<br>Zulaikha</h1>
+    <h1 class="script">Untuk Istrikuu<br>Arissa Zulaikha</h1>
     <button id="introBtn" type="button" aria-label="Buka">💜</button>
     <p class="ihint">Ketuk hatinya untuk membuka 💜</p>
     <div id="introCount"></div>
@@ -276,7 +304,7 @@
 <div class="page active" id="page-home">
   <div class="hero">
     <small>28 Mei 2026 — 28 November 2026</small>
-    <h1 class="script">Happy 6 Months,<br>Arissa Zulaikha 💜</h1>
+    <h1 class="script">Happy 6 Months,<br>Istrikuu 💜</h1>
     <!-- Foto bulat berganti otomatis tiap 3 detik dari daftar PHOTOS (arissa1-6) -->
     <div class="photo-frame" id="mainPhoto" title="Pencet aku 💜">
       <img src="arissa1.jpg" alt="Arissa Zulaikha" data-fb="0">
@@ -287,7 +315,7 @@
 
   <section id="hitung" class="reveal">
     <h2 class="script">Waktu yang Kita Lalui</h2>
-    <p class="sub">Sejak 28 Mei 2026, setiap detik bersamamu begitu berharga</p>
+    <p class="sub">Sejak 28 Mei 2026, setiap detik sama kamu itu berharga banget, duniakuu</p>
     <div class="counter">
       <div class="box"><b id="d">0</b><span>Hari</span></div>
       <div class="box"><b id="h">0</b><span>Jam</span></div>
@@ -299,24 +327,24 @@
 
   <section class="reveal">
     <h2 class="script">Pencet Hatinya 💜</h2>
-    <p class="sub">Setiap pencetan = satu tanda cintaku untukmu</p>
+    <p class="sub">Setiap pencetan = satu cinta dari aku buat kamu, babyykuuu</p>
     <div class="love-wrap">
       <button class="love-btn" id="loveBtn" aria-label="Kirim cinta">💜</button>
       <div class="love-count"><span id="loveCount">0</span> cinta terkirim</div>
-      <p class="love-msg" id="loveMsg">Ayo pencet sebanyak-banyaknya, sayang!</p>
+      <p class="love-msg" id="loveMsg">Ayo pencet sebanyak-banyaknya, princesskuuu!</p>
     </div>
   </section>
 
   <section class="reveal" id="alasan">
     <h2 class="script">Alasan Aku Sayang Kamu 💌</h2>
-    <p class="sub">Ketuk kartunya satu per satu, sayang</p>
+    <p class="sub">Ketuk kartunya satu per satu ya, cintakuuuu</p>
     <div class="reasons" id="reasons"></div>
     <p class="rs-count" id="rsCount"></p>
   </section>
 
   <section class="reveal" id="rahasia">
     <h2 class="script">Pesan Rahasia 🔐</h2>
-    <p class="sub">Ada pesan yang hanya boleh dibaca olehmu</p>
+    <p class="sub">Ada pesan yang cuma boleh dibaca sama istrikuu</p>
     <div class="secret">
       <span class="lock" id="lockIcon">🔒</span>
       <p>Petunjuk: tanggal hari pertama kita, tanggal-bulan-tahun.<br><small>Contoh penulisan: 01012026</small></p>
@@ -330,14 +358,14 @@
 
   <section>
     <h2 class="script">Perjalanan Kita</h2>
-    <p class="sub">Enam bulan, enam alasan aku makin jatuh cinta</p>
+    <p class="sub">Enam bulan, enam alasan aku makin jatuh cinta sama kamu, semestakuuu</p>
     <div class="timeline">
-      <div class="item reveal"><div class="card"><h3>Bulan 1 · 28 Mei 2026</h3><p>Hari ketika semuanya dimulai. Hari terbaik yang pernah aku pilih dalam hidupku.</p></div></div>
-      <div class="item reveal"><div class="card"><h3>Bulan 2</h3><p>Aku mulai sadar, senyummu adalah hal favoritku di dunia ini.</p></div></div>
-      <div class="item reveal"><div class="card"><h3>Bulan 3</h3><p>Denganmu, hal sederhana pun terasa istimewa. Kamu membuat hari biasa jadi luar biasa.</p></div></div>
-      <div class="item reveal"><div class="card"><h3>Bulan 4</h3><p>Kamu bukan hanya kekasihku, tapi juga tempat pulang dan sahabat terbaikku.</p></div></div>
-      <div class="item reveal"><div class="card"><h3>Bulan 5</h3><p>Makin lama, makin yakin: kamu jawaban dari semua doaku.</p></div></div>
-      <div class="item reveal"><div class="card"><h3>Bulan 6 · Hari Ini 💍</h3><p>Setengah tahun yang indah, dan aku ingin ribuan hari lagi bersamamu.</p></div></div>
+      <div class="item reveal"><div class="card"><h3>Bulan 1 · 28 Mei 2026</h3><p>Hari semuanya dimulai. Hari terbaik yang pernah aku pilih dalam hidupku, istrikuu.</p></div></div>
+      <div class="item reveal"><div class="card"><h3>Bulan 2</h3><p>Aku mulai sadar, senyummu itu hal favoritku di dunia ini, duniakuu.</p></div></div>
+      <div class="item reveal"><div class="card"><h3>Bulan 3</h3><p>Sama kamu, hal sederhana pun kerasa istimewa. Kamu bikin hari biasa jadi luar biasa, babyykuuu.</p></div></div>
+      <div class="item reveal"><div class="card"><h3>Bulan 4</h3><p>Kamu bukan cuma kekasihku, tapi juga tempat pulang dan sahabat terbaikku, cintakuuuu.</p></div></div>
+      <div class="item reveal"><div class="card"><h3>Bulan 5</h3><p>Makin lama makin yakin: kamu jawaban dari semua doaku, princesskuuu.</p></div></div>
+      <div class="item reveal"><div class="card"><h3>Bulan 6 · Hari Ini 💍</h3><p>Setengah tahun yang indah, dan aku mau ribuan hari lagi sama kamu, semestakuuu.</p></div></div>
     </div>
     <br><button class="btn" data-go="gallery">Lihat foto-foto cantikmu 📸</button>
   </section>
@@ -347,17 +375,17 @@
 <div class="page" id="page-gallery">
   <section>
     <h2 class="script">Galeri Arissa Zulaikha 📸</h2>
-    <p class="sub">Semua foto tercantik dari perempuan tercantik. Klik foto untuk memperbesar, pencet 💜 untuk memberi cinta.</p>
+    <p class="sub">Semua foto tercantik dari istrikuu yang paling cantik. Klik foto buat memperbesar, pencet 💜 buat kasih cinta.</p>
     <p class="total">Total cinta untuk foto: <span id="totalLikes">0</span> 💜</p>
     <div class="grid" id="grid"></div>
   </section>
   <section class="mail-sec reveal">
     <h2 class="script">Ada Surat Untukmu 💌</h2>
-    <p class="sub">Setelah semua foto cantik ini, ada yang ingin kusampaikan...</p>
+    <p class="sub">Setelah semua foto cantik ini, ada yang mau aku sampaikan, babyykuuu...</p>
     <button class="envelope" id="envelope" aria-label="Buka surat">
       <div class="back"></div><div class="paper"></div><div class="front"></div><div class="flap"></div><div class="seal">💜</div>
     </button>
-    <p class="hint">Klik suratnya, sayang 👆</p>
+    <p class="hint">Klik suratnya, princesskuuu 👆</p>
   </section>
 </div>
 
@@ -365,11 +393,11 @@
 <div class="page" id="page-dream">
   <section>
     <h2 class="script">Impian Kita 🏡</h2>
-    <p class="sub">Hal-hal yang diam-diam selalu kuselipkan dalam doaku untukmu</p>
+    <p class="sub">Hal-hal yang diam-diam selalu aku selipkan di doaku buat kamu, istrikuu</p>
 
     <div class="dream-quote reveal">
-      <span class="script">Sayangku Arissa,</span>
-      Aku tidak sedang membayangkan istana. Aku membayangkan sebuah rumah kecil yang hangat, dengan pintu yang selalu terbuka untuk tawa, aroma masakanmu yang menyambutku pulang, dan lampu teras yang menyala menunggu kita semua berkumpul.
+      <span class="script">Istrikuu, duniakuu,</span>
+      Aku nggak lagi bayangin istana, cintakuuuu. Aku bayangin rumah kecil yang hangat, pintunya selalu terbuka buat tawa, ada aroma masakanmu yang nyambut aku pulang, dan lampu teras yang nyala nungguin kita semua kumpul.
     </div>
 
     <div class="timeline">
@@ -401,7 +429,7 @@
     <p class="sub" style="margin-top:30px">Aamiin ya Rabbal 'alamin. Semoga semua ini bukan sekadar impian, tapi cerita yang kelak kita ceritakan kepada mereka. 💍</p>
   </section>
   <footer>
-    <p class="script">Aku sayang kamu, Arissa Zulaikha 💜</p>
+    <p class="script">Aku sayang kamu, istrikuu semestakuuu 💜</p>
     <p>Dibuat dengan cinta · 28 Mei 2026 ❤ selamanya</p>
   </footer>
 </div>
@@ -427,30 +455,30 @@
 /* ============ DATA FOTO (EDIT DI SINI) ============
    Taruh foto di folder yang sama dengan file ini, lalu sesuaikan nama file & keterangannya. */
 const PHOTOS = [
-  {o:'p',src:'arissa1.jpg', cap:'Senyum yang bikin duniaku berhenti 💜'},
-  {o:'p',src:'arissa2.jpg', cap:'Cantiknya nggak masuk akal 🌸'},
-  {o:'p',src:'arissa3.jpg', cap:'Favoritku sepanjang masa ✨'},
-  {o:'l',src:'arissa4.jpg', cap:'Tertawalah terus, sayang 😊'},
-  {o:'l',src:'arissa5.jpg', cap:'Kamu adalah rumahku 🏡'},
-  {o:'l',src:'arissa6.jpg', cap:'Selamanya milikku 💍'}
+  {o:'p',src:'arissa1.jpg', cap:'Senyum yang bikin duniakuu berhenti 💜'},
+  {o:'p',src:'arissa2.jpg', cap:'Istrikuu cantiknya nggak masuk akal 🌸'},
+  {o:'p',src:'arissa3.jpg', cap:'Favoritku sepanjang masa, babyykuuu ✨'},
+  {o:'l',src:'arissa4.jpg', cap:'Ketawa terus ya, princesskuuu 😊'},
+  {o:'l',src:'arissa5.jpg', cap:'Kamu rumahku, semestakuuu 🏡'},
+  {o:'l',src:'arissa6.jpg', cap:'Selamanya milikku, istrikuu 💍'}
 ];
 const START = new Date('2026-05-28T00:00:00');
 const SIX = new Date('2026-11-28T00:00:00');
 const PHRASES = [
-  'Untuk perempuan paling cantik di duniaku, Arissa Zulaikha.',
-  'Enam bulan bersamamu rasanya seperti mimpi yang tidak ingin aku akhiri.',
-  'Terima kasih sudah memilih aku, dan terus tinggal.',
-  'Aku sayang kamu, hari ini lebih dari kemarin. 💜'
+  'Untuk istrikuu, duniakuu, Arissa Zulaikha.',
+  'Enam bulan sama kamu rasanya kayak mimpi yang nggak mau aku sudahi, cintakuuuu.',
+  'Makasih udah milih aku dan tetap tinggal, babyykuuu.',
+  'Aku sayang kamu, hari ini lebih dari kemarin, princesskuuu. 💜'
 ];
-const LETTER = `<span class="script">Untuk Arissa Zulaikha, cintaku,</span>
+const LETTER = `<span class="script">Untuk istrikuu, duniakuu, cintakuuuu,</span>
 
-Terima kasih sudah hadir dan memilih untuk tinggal. Enam bulan lalu aku belum tahu bahwa hari itu akan mengubah segalanya. Sekarang aku tahu: kamu adalah salah satu hal terbaik yang pernah terjadi padaku.
+Makasih ya udah hadir dan milih tinggal. Enam bulan lalu aku belum tahu kalau hari itu bakal ngubah semuanya. Sekarang aku tahu: kamu salah satu hal terbaik yang pernah terjadi di hidupku, babyykuuu.
 
-Terima kasih untuk tawamu yang menenangkan, sabarmu yang luar biasa, dan perhatian kecil yang selalu berhasil membuatku merasa dicintai. Bersamamu, aku belajar bahwa bahagia itu sederhana: cukup ada kamu di sampingku.
+Makasih buat tawamu yang bikin tenang, sabarmu yang luar biasa, dan perhatian-perhatian kecilmu yang selalu berhasil bikin aku ngerasa dicintai. Sama kamu aku belajar kalau bahagia itu sederhana: cukup ada kamu di sampingku, princesskuuu.
 
-Aku tidak menjanjikan hidup yang sempurna, tapi aku berjanji akan terus berusaha menjadi alasan kamu tersenyum, bukan alasan kamu menangis. Aku akan menggenggam tanganmu di hari yang cerah maupun saat hujan.
+Aku nggak janji hidup yang sempurna, tapi aku janji bakal terus berusaha jadi alasan kamu senyum, bukan alasan kamu nangis. Aku bakal genggam tanganmu di hari cerah maupun pas hujan, semestakuuu.
 
-Selamat 6 bulan, sayangku. Semoga kita terus bersama, bertumbuh, dan saling mencintai sampai 6 tahun, 60 tahun, dan seterusnya. ♾️
+Selamat 6 bulan, istrikuu. Semoga kita terus bersama, tumbuh, dan saling mencintai sampai 6 tahun, 60 tahun, dan seterusnya. ♾️
 
 <span class="script" style="display:block;text-align:right">Selalu milikmu, 💜</span>
 
@@ -513,7 +541,7 @@ tick();setInterval(tick,1000);
 
 /* ============ TOMBOL LOVE BESAR ============ */
 let love = store(true,'arissa_love') || 0;
-const MSG = {1:'Satu cinta untukmu 💜',10:'Sepuluh! Aku makin sayang 😘',25:'Kamu bikin hatiku meleleh 🥹',50:'Lima puluh cinta! Kamu memang segalanya 💜',100:'Seratus! Aku cinta kamu sampai ke bulan dan kembali 🌙',200:'Jariku capek, tapi cintaku nggak pernah capek 😂💜',500:'Kamu keras kepala banget sayangku. Aku suka 💍'};
+const MSG = {1:'Satu cinta buat istrikuu 💜',10:'Sepuluh! Makin sayang aku sama kamu 😘',25:'Kamu bikin hatiku meleleh, babyykuuu 🥹',50:'Lima puluh cinta! Kamu memang semestakuuu 💜',100:'Seratus! Aku cinta kamu sampai ke bulan dan balik lagi, cintakuuuu 🌙',200:'Jariku capek, tapi cintaku nggak pernah capek 😂💜',500:'Keras kepala banget sih princesskuuu. Aku suka 💍'};
 $('#loveCount').textContent=love;
 $('#loveBtn').addEventListener('click',e=>{
   love++;$('#loveCount').textContent=love;store(false,'arissa_love',love);
@@ -524,7 +552,7 @@ $('#loveBtn').addEventListener('click',e=>{
 });
 
 /* ============ FOTO UTAMA: double tap / klik = cinta ============ */
-$('#mainPhoto').addEventListener('click',e=>{burst(e.clientX,e.clientY,12);toast('Arissa Zulaikha cantik banget 😍')});
+$('#mainPhoto').addEventListener('click',e=>{burst(e.clientX,e.clientY,12);toast('Istrikuu cantik banget 😍')});
 
 /* ============ GALERI ============ */
 let likes = store(true,'arissa_photo_likes') || {};
@@ -688,24 +716,20 @@ $('#scrollBtn').addEventListener('click',e=>{e.preventDefault();$('#hitung').scr
 <script>
 /* ============ MUSIK LATAR ============
    Taruh file lagu bernama musik.mp3 sejajar dengan index.html.
-   Musik mulai saat halaman pertama kali disentuh/diklik (aturan browser), tombol 🎵 untuk jeda/putar. */
+   Musik mulai saat kunci tanggal jadian berhasil dibuka (dipanggil dari window.startBgm), tombol 🎵 untuk jeda/putar. */
 (function(){
   const a=document.getElementById('bgm'),b=document.getElementById('musicBtn');
-  let want=true;
+  let want=false;
   a.volume=.6;
   b.classList.add('show');
   a.addEventListener('error',()=>{b.style.opacity='.5';b.title='File musik.mp3 belum ada'});
   function sync(){b.classList.toggle('playing',!a.paused);b.textContent=a.paused?'🔇':'🎵'}
   a.addEventListener('play',sync);a.addEventListener('pause',sync);
   function start(){if(want&&a.paused)a.play().catch(()=>{})}
-  ['click','touchstart','keydown'].forEach(ev=>document.addEventListener(ev,function f(e){
-    if(e.target.closest&&e.target.closest('#musicBtn'))return;
-    start();if(!a.paused)document.removeEventListener(ev,f);
-  },{passive:true}));
+  window.startBgm=function(){want=true;a.play().catch(()=>{})};
   sync();
   b.addEventListener('click',()=>{if(a.paused){want=true;a.play().catch(()=>{})}else{want=false;a.pause()}});
   document.addEventListener('visibilitychange',()=>{if(document.hidden)a.pause();else start()});
-  start();
 })();
 </script>
 
@@ -763,16 +787,16 @@ $('#scrollBtn').addEventListener('click',e=>{e.preventDefault();$('#hitung').scr
 
   /* ---------- ALASAN AKU SAYANG KAMU (edit teksnya di sini) ---------- */
   const REASONS=[
-    'Senyummu membuat hari terberatku terasa ringan.',
-    'Kamu sabar menghadapiku, bahkan saat aku belum pantas disabari.',
-    'Doamu menguatkanku tanpa pernah meminta balasan.',
-    'Tawamu adalah suara paling menenangkan yang kukenal.',
-    'Kamu apa adanya, dan itu sudah lebih dari cukup bagiku.',
-    'Caramu peduli pada hal-hal kecil diam-diam menyentuh hatiku.',
-    'Bersamamu aku ingin menjadi laki-laki yang lebih baik.',
-    'Kamu mengajarkanku arti setia dan bertahan.',
-    'Denganmu, masa depan terasa indah dan penuh harapan.',
-    'Karena kamu adalah kamu, Arissa Zulaikha 💜'
+    'Senyummu bikin hari terberatku terasa ringan, duniakuu.',
+    'Kamu sabar banget ngadepin aku, bahkan pas aku belum pantas disabarin.',
+    'Doamu menguatkan aku tanpa pernah minta balasan, istrikuu.',
+    'Tawamu suara paling menenangkan yang aku kenal, babyykuuu.',
+    'Kamu apa adanya, dan itu udah lebih dari cukup buat aku.',
+    'Caramu peduli sama hal-hal kecil diam-diam nyentuh hatiku, princesskuuu.',
+    'Sama kamu aku pengin jadi laki-laki yang lebih baik.',
+    'Kamu ngajarin aku arti setia dan bertahan, cintakuuuu.',
+    'Sama kamu, masa depan kerasa indah dan penuh harapan, semestakuuu.',
+    'Karena kamu adalah kamu, istrikuu Arissa Zulaikha 💜'
   ];
   const rw=$('#reasons'),rc=$('#rsCount');let opened=new Set();
   function upd(){rc.textContent=opened.size<REASONS.length?`${opened.size} dari ${REASONS.length} alasan terbuka`:'Dan masih ada ribuan alasan lain yang belum sempat kutulis… 💜'}
@@ -790,15 +814,15 @@ $('#scrollBtn').addEventListener('click',e=>{e.preventDefault();$('#hitung').scr
 
   /* ---------- PESAN RAHASIA (kata sandi: 28052026) ---------- */
   const PASS=['28052026','2852026','280526'];
-  const SECRET=`<span class="script">Arissa sayang,</span>
+  const SECRET=`<span class="script">Istrikuu sayang,</span>
 
-Selamat 6 bulan. Terima kasih sudah memilih bertahan, memilih percaya, dan memilih aku di hari-hari ketika aku sendiri belum yakin pada diriku.
+Selamat 6 bulan, duniakuu. Makasih udah milih bertahan, milih percaya, dan milih aku di hari-hari pas aku sendiri belum yakin sama diriku.
 
-Aku tidak bisa menjanjikan hidup yang selalu mudah, tapi aku berjanji akan terus belajar, terus berjuang, dan terus menjagamu dengan sepenuh hati.
+Aku nggak bisa janji hidup yang selalu mudah, tapi aku janji bakal terus belajar, terus berjuang, dan terus jagain kamu sepenuh hati, cintakuuuu.
 
-Semoga Allah menjaga hati kita, mendekatkan langkah kita, dan menjadikan kita keluarga kecil yang saling menguatkan.
+Semoga Allah jagain hati kita, dekatin langkah kita, dan jadiin kita keluarga kecil yang saling menguatkan, semestakuuu.
 
-Aku sayang kamu, hari ini dan seterusnya. 💜
+Aku sayang kamu, hari ini dan seterusnya, babyykuuu. 💜
 
 — Fadlan`;
   const sf=$('#secretForm'),si=$('#secretInput'),sm=$('#secretMsg'),lk=$('#lockIcon');
@@ -812,7 +836,7 @@ Aku sayang kamu, hari ini dan seterusnya. 💜
       sm.scrollIntoView({behavior:'smooth',block:'center'});
     }else{
       si.classList.remove('shake');void si.offsetWidth;si.classList.add('shake');
-      if(typeof toast==='function')toast('Belum tepat, sayang 💜 coba ingat hari pertama kita');
+      if(typeof toast==='function')toast('Belum tepat, babyykuuu 💜 coba ingat hari pertama kita');
     }
   }
   $('#secretBtn').addEventListener('click',tryOpen);
@@ -820,18 +844,18 @@ Aku sayang kamu, hari ini dan seterusnya. 💜
 
   /* ---------- TEKS BERJALAN (ikut waktu musik; ganti kalimat & detiknya sesuka hati) ---------- */
   const LYRICS=[
-    {t:0, x:'Enam bulan lalu, aku belum tahu hari ini akan sebahagia ini 💜'},
-    {t:5, x:'Ternyata jawabannya adalah kamu'},
-    {t:10,x:'Kamu hadir, dan hari biasa berubah menjadi cerita'},
-    {t:15,x:'Setiap tawamu menjadi lagu favoritku'},
-    {t:20,x:'Bersamamu, yang sederhana pun terasa istimewa'},
-    {t:25,x:'Terima kasih sudah bertahan dan percaya'},
-    {t:30,x:'Kamu rumah tempat hatiku pulang 🏡'},
-    {t:35,x:'Aku tidak menjanjikan sempurna, hanya setia'},
-    {t:40,x:'Doaku selalu menyebut namamu'},
-    {t:45,x:'Semoga Allah mudahkan jalan kita'},
+    {t:0, x:'Enam bulan lalu, aku belum tahu hari ini bakal sebahagia ini 💜'},
+    {t:5, x:'Ternyata jawabannya kamu, istrikuu'},
+    {t:10,x:'Kamu hadir, dan hari biasa jadi cerita, duniakuu'},
+    {t:15,x:'Setiap tawamu jadi lagu favoritku, babyykuuu'},
+    {t:20,x:'Sama kamu, yang sederhana pun kerasa istimewa'},
+    {t:25,x:'Makasih udah bertahan dan percaya, cintakuuuu'},
+    {t:30,x:'Kamu rumah tempat hatiku pulang, semestakuuu 🏡'},
+    {t:35,x:'Aku nggak janji sempurna, cuma setia'},
+    {t:40,x:'Doaku selalu nyebut namamu, princesskuuu'},
+    {t:45,x:'Semoga Allah mudahin jalan kita'},
     {t:50,x:'Menuju halal, menuju rumah, menuju selamanya 💍'},
-    {t:55,x:'Happy 6 Months, Arissa Zulaikha 💜'}
+    {t:55,x:'Happy 6 Months, istrikuu 💜'}
   ];
   const a=$('#bgm'),ly=$('#lyric'),lb=$('#lyricBtn');
   let lyOn=store.get('arissa_lyric')!=='0',cur=-1;
@@ -847,6 +871,27 @@ Aku sayang kamu, hari ini dan seterusnya. 💜
   }
   setInterval(tick,300);
   a.addEventListener('pause',()=>ly.classList.remove('show'));
+})();
+</script>
+<script>
+/* ============ KUNCI JADIAN (sebelum layar pembuka 3-2-1) ============ */
+(function(){
+  const g=document.getElementById('gate'),i=document.getElementById('gateInput'),m=document.getElementById('gateMsg'),l=document.getElementById('gateLock');
+  const OK=['28052026','2852026','280526'];
+  document.body.style.overflow='hidden';
+  function tryGate(){
+    const v=i.value.replace(/\D/g,'');
+    if(OK.includes(v)){
+      l.textContent='🔓';m.textContent='Benar! Selamat datang, istrikuu 💜';i.blur();
+      if(window.startBgm)window.startBgm();
+      setTimeout(()=>{g.classList.add('out');document.body.style.overflow='';setTimeout(()=>g.remove(),900)},700);
+    }else{
+      i.classList.remove('shake');void i.offsetWidth;i.classList.add('shake');
+      m.textContent='Belum tepat, babyykuuu 💜 coba ingat hari jadian kita';
+    }
+  }
+  document.getElementById('gateBtn').addEventListener('click',tryGate);
+  i.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();tryGate()}});
 })();
 </script>
 </body>
